@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Webpage</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body body class="d-flex flex-column vh-100" style="background-image: url(/static/bgimage.jpg);">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Distributed Training</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">About Us</a>
+          </div>
+        </div>
+      </nav>
+    <div class="container" style="margin-top: 10px;">
+        <h4 class="text-white mb-3" style="margin-top: 40px;">Select your preferred AI model and dataset to kickstart the training:</h4>
+        <br>
+        <div class="card bg-dark text-white rounded p-3" style="margin-top: 80px;">
+            <form method="POST">
+                <div class="form-group row">
+                    <label for="model" class="col-sm-2 col-form-label">Choose the Model:</label>
+                    <div class="col-sm-10">
+                        <select name="model" id="model" class="form-control">
+                            {% for model in models %}
+                            <option value="{{ model }}" {% if selected_model == model %} selected {% endif %}>{{ model }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="database" class="col-sm-2 col-form-label">Choose the Dataset:</label>
+                    <div class="col-sm-10">
+                        <select name="database" id="database" class="form-control">
+                            {% for database in databases %}
+                            <option value="{{ database }}" {% if selected_database == database %} selected {% endif %}>{{ database }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+            <div class="mt-3 mb-3">
+                <button type="button" class="btn btn-primary" >Download Trained Model</button>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-auto py-3">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <span class="text-white mb-3">PDC Project by M Talal Faiz and M Aleem</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
